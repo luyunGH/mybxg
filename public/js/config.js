@@ -3,6 +3,7 @@ require.config({//配置别名
     paths: {
         jquery: 'jquery/jquery.min',
         cookie: 'jquery-cookie/jquery.cookie',
+        template: 'artTemplate/template-web',
         common: '../js/common',
         login: '../js/login'
     }
