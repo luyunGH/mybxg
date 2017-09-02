@@ -7,7 +7,9 @@ require.config({//配置别名
         bootstrap : 'bootstrap/js/bootstrap.min',
         common: '../js/common',
         login: '../js/login',
-        teacherlist : '../js/teacher-list'
+        index : '../js/index',
+        teacherlist : '../js/teacher-list',
+        util : '../js/util'
     },
     shim : {//做兼容处理用
         bootstrap : {

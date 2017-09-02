@@ -2,9 +2,10 @@
  * Created by luyun on 2017/9/1.
  */
 //bootstrap的js插件需要依赖于jQuery，bootstrap的js文件不是标准的require.js模块,则需要做兼容处理
-define(['jquery', 'template', 'bootstrap'], function ($, template) {
+define(['jquery', 'template', 'util', 'bootstrap'], function ($, template,util) {
     //console.log('12345');
-    //调用后台接口获取列表数据
+    util.setMenu(location.pathname);
+   //调用后台接口获取列表数据
     $.ajax({
         url: '/api/teacher',
         type: 'get',
