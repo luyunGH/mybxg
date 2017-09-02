@@ -1,46 +1,77 @@
 /**
  * Created by luyun on 2017/9/1.
  */
-//bootstrapµÄjs²å¼şĞèÒªÒÀÀµÓÚjQuery£¬bootstrapµÄjsÎÄ¼ş²»ÊÇ±ê×¼µÄrequire.jsÄ£¿é,ÔòĞèÒª×ö¼æÈİ´¦Àí
-define(['jquery','template','bootstrap'],function($,template){
+//bootstrapçš„jsæ’ä»¶éœ€è¦ä¾èµ–äºjQueryï¼Œbootstrapçš„jsæ–‡ä»¶ä¸æ˜¯æ ‡å‡†çš„require.jsæ¨¡å—,åˆ™éœ€è¦åšå…¼å®¹å¤„ç†
+define(['jquery', 'template', 'bootstrap'], function ($, template) {
     //console.log('12345');
-    //µ÷ÓÃºóÌ¨½Ó¿Ú»ñÈ¡ÁĞ±íÊı¾İ
+    //è°ƒç”¨åå°æ¥å£è·å–åˆ—è¡¨æ•°æ®
     $.ajax({
-        url : '/api/teacher',
-        type : 'get',
-        dataType : 'json',
-        success : function(data){
+        url: '/api/teacher',
+        type: 'get',
+        dataType: 'json',
+        success: function (data) {
             //console.log(data);
-            //½âÎöÊı¾İäÖÈ¾Ò³Ãæ
-            var html = template('teacherTpl',{list : data.result});
+            //è§£ææ•°æ®æ¸²æŸ“é¡µé¢
+            var html = template('teacherTpl', {list: data.result});
             $('#teacherInfo').html(html);
 
 
-
-            $('.preview').click(function(){
+            //ç‚¹å‡»æŸ¥çœ‹è·å–æ¨¡æ€æ¡†æ•°æ®
+            $('.preview').click(function () {
                 //console.log(1234);
-                //»ñÈ¡µ±Ç°ID
-                var td = $(this).closest('td');//closest()Ñ¡ÖĞµ±Ç°±êÇ©×î½üµÄ¸¸ÔªËØ
+                //è·å–å½“å‰ID
+                var td = $(this).closest('td');//closest()é€‰ä¸­å½“å‰æ ‡ç­¾æœ€è¿‘çš„çˆ¶å…ƒç´ 
                 var tcId = td.attr('data-tcId');
-                //¸ù¾İIDµô½Ó¿Ú
+                //æ ¹æ®IDæ‰æ¥å£
                 $.ajax({
-                    type : 'get',
-                    url : '/api/teacher/view',
-                    data : {tc_id : tcId},
-                    dataType : 'json',
-                    success : function(data){
-                        console.log(data);
-                        //½âÎöÊı¾İäÖÈ¾Ä£°å
-                        var html = template('modalTpl',data.result);
+                    type: 'get',
+                    url: '/api/teacher/view',
+                    data: {tc_id: tcId},
+                    dataType: 'json',
+                    success: function (data) {
+                        //console.log(data);
+                        //è§£ææ•°æ®æ¸²æŸ“æ¨¡æ¿
+                        var html = template('modalTpl', data.result);
                         $('#modalInfo').html(html);
-                        //ÏÔÊ¾µ¯¿ò
+                        //æ˜¾ç¤ºå¼¹æ¡†
                         $('#teacherModal').modal();
                     }
-                })
+                });
+
             })
 
-
-
+            //æ§åˆ¶å¯ç”¨å’Œæ³¨é”€
+            $('.eod').click(function () {
+                //è·å–å½“å‰è®°å½•ID
+                var td = $(this).closest('td');
+                var tcId = td.attr('data-tcId');
+                var tcStatus = td.attr('data-status');
+                //è°ƒç”¨æ¥å£
+                //ç¼“å­˜this
+                var that = this;
+                $.ajax({
+                    type: 'post',
+                    url: '/api/teacher/handle',
+                    data: {
+                        tc_id: tcId,
+                        tc_status: tcStatus
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        //console.log(data);
+                        if (data.code == 200) {
+                            /*ä¿®æ”¹å½“å‰çŠ¶æ€*/
+                            td.attr('data-status',data.result.tc_status);
+                            //ä¿®æ”¹æ–‡å­—ä¿¡æ¯
+                            if(data.result.tc_status == 0){
+                                $(that).html('æ³¨é”€');
+                            }else{
+                                $(that).html('å¯ç”¨');
+                            }
+                        }
+                    }
+                })
+            });
         }
     });
 });

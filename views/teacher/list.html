@@ -84,6 +84,7 @@
     </div>
 </div>
 <?php include('./views/common/script.html');?>
+<!--查看模态框渲染模板-->
 <script type="text/template" id="modalTpl">
     <tbody>
     <tr>
@@ -138,6 +139,7 @@
     </tr>
     </tbody>
 </script>
+<!--<!--讲师管理列表模板-->-->
 <script type="html/template" id="teacherTpl">
     {{each list as item index}}
     <tr>
@@ -153,10 +155,16 @@
             {{/if}}
         </td>
         <td>{{item.tc_cellphone}}</td>
-        <td data-tcId={{item.tc_id}}>
+        <td data-tcId={{item.tc_id}} data-status="{{item.tc_status}}">
             <a href="#teacherModal" class="btn btn-info btn-xs preview">查 看</a>
             <a href="./teacher_add.html" class="btn btn-info btn-xs">编 辑</a>
-            <a href="javascript:;" class="btn btn-warning btn-xs">注 销</a>
+            <a href="javascript:;" class="btn btn-warning btn-xs eod">
+                {{if item.tc_status == 0}}
+                注销
+                {{else}}
+                启用
+                {{/if}}
+            </a>
         </td>
     </tr>
     {{/each}}
