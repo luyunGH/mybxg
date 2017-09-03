@@ -39,6 +39,7 @@ define(['jquery', 'template', 'cookie'], function ($, template) {
     var info = loginInfo ? JSON.parse(loginInfo) : {};
     //console.log(info);
     //当模板内容比较少时 直接用render这种方法渲染数据
+    //渲染头部头像信息
     var tplstr = ' <div class="avatar img-circle"> <img src="{{tc_avatar}}"> </div> <h4>{{tc_name}}</h4>';
     var html = template.render(tplstr,info);
     $('.aside .profile').html(html);
