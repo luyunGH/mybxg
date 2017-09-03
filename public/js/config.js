@@ -9,7 +9,8 @@ require.config({//配置别名
         login: '../js/login',
         index : '../js/index',
         teacherlist : '../js/teacher-list',
-        util : '../js/util'
+        util : '../js/util',
+        teacheradd : '../js/teacher-add'
     },
     shim : {//做兼容处理用
         bootstrap : {
