@@ -5,7 +5,6 @@
 define(['jquery', 'template', 'util', 'bootstrap'], function ($, template,util) {
     //console.log('12345');
     var ret = util.qs('flag');
-    console.log(ret);
     util.setMenu(location.pathname);
    //调用后台接口获取列表数据
     $.ajax({

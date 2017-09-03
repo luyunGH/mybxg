@@ -1,7 +1,7 @@
 /**
  * Created by luyun on 2017/9/2.
  */
-define(['jquery','template','util'],function($,template,util){
+define(['jquery','template','util','datepicker','language'],function($,template,util){
     //设置菜单选中
     //设置添加讲师页面和编辑页面共用菜单选中
     util.setMenu('/teacher/list');
