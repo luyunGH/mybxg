@@ -1,7 +1,7 @@
 /**
  * Created by luyun on 2017/9/2.
  */
-define(['jquery','template','util','datepicker','language','validate'],
+define(['jquery','template','util','datepicker','language','validate','form'],
     function($,template,util){
     //设置菜单选中
     //设置添加讲师页面和编辑页面共用菜单选中
@@ -32,13 +32,24 @@ define(['jquery','template','util','datepicker','language','validate'],
         submitForm('/api/teacher/add');
     }
     //提交表单共用方法
-    //方法二：（有验证）
+    //方法二：（有验证 表单验证插件）
     function submitForm(url){
         $('#teacherForm').validate({////validate()表单验证的方法
             sendForm : false,//阻止默认提交
             valid : function(){//所有的都验证通过调用此方法
                 // console.log('ok');
                 //这里应该提交表单
+                 /*表单提交操作 插件*/
+                    $(this).ajaxSubmit({
+                        type : 'post',
+                        url : url,
+                        dataType : 'json',
+                        success : function(data){
+                            if(data.code == 200){
+                                location.href = '/teacher/list';
+                            }
+                        }
+                    });
             },
             description : {//提示信息
                 tc_name : {
@@ -57,7 +68,7 @@ define(['jquery','template','util','datepicker','language','validate'],
             }
         })
     }
-
+   
 
     //方法一表单提交方法（无验证）
    /* function submitForm(url){

@@ -9,6 +9,7 @@ require.config({//配置别名
         language : 'bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',//日期选择插件支持的语言种类插件  language 也是jQuery插件
         // 此模块依赖jQuery插件 还依赖datepicker 不是标准的模块
         validate : 'validate/jquery-validate.min',
+        form : 'jquery-form/jquery.form',
         common: '../js/common',
         login: '../js/login',
         index : '../js/index',
