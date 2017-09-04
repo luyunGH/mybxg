@@ -1,7 +1,8 @@
 /**
  * Created by luyun on 2017/9/2.
  */
-define(['jquery','template','util','datepicker','language'],function($,template,util){
+define(['jquery','template','util','datepicker','language','validate'],
+    function($,template,util){
     //设置菜单选中
     //设置添加讲师页面和编辑页面共用菜单选中
     util.setMenu('/teacher/list');
@@ -31,7 +32,35 @@ define(['jquery','template','util','datepicker','language'],function($,template,
         submitForm('/api/teacher/add');
     }
     //提交表单共用方法
+    //方法二：（有验证）
     function submitForm(url){
+        $('#teacherForm').validate({////validate()表单验证的方法
+            sendForm : false,//阻止默认提交
+            valid : function(){//所有的都验证通过调用此方法
+                // console.log('ok');
+                //这里应该提交表单
+            },
+            description : {//提示信息
+                tc_name : {
+                    required : '请输入用户名',
+                    valid : '用户名可以使用'
+                },
+                tc_pass : {
+                     required : '请输入密码',
+                     pattern : '密码必须是6位数字',
+                     valid : '密码有效'
+                },
+                tc_join_date : {
+                     required : '请输入日期',
+                     valid : '日期有效',
+                },
+            }
+        })
+    }
+
+
+    //方法一表单提交方法（无验证）
+   /* function submitForm(url){
         $('#teacherBtn').click(function(){
             $.ajax({
                 type : 'post',
@@ -46,5 +75,5 @@ define(['jquery','template','util','datepicker','language'],function($,template,
                 }
             })
         })
-    }
+    }*/
 });
