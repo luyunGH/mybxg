@@ -34,6 +34,9 @@ require.config({//配置别名
         },
         uploadify : {
             deps : ['jquery']
+        },
+        ckeditor : {
+            exports : 'CKEDITOR'
         }
     }
 });
