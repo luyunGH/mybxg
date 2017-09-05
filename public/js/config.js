@@ -11,6 +11,7 @@ require.config({//配置别名
         validate : 'validate/jquery-validate.min',//表单验证插件
         form : 'jquery-form/jquery.form',//表单提交插件
         uploadify : 'uploadify/jquery.uploadify.min', //文件上传插件
+        region : 'jquery-region/jquery.region',//三级联动插件
         common: '../js/common',
         login: '../js/login',
         index : '../js/index',
