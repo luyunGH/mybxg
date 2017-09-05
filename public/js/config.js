@@ -18,7 +18,8 @@ require.config({//配置别名
         teacherlist : '../js/teacher-list',
         util : '../js/util',
         teacheradd : '../js/teacher-add',
-        settings : '../js/settings'
+        settings : '../js/settings',
+        ckeditor : 'ckeditor/ckeditor'//富文本插件，不依赖jQuery
     },
     //判断是不是标准模块看插件中是否定义define模块
     shim : {//不是标准模块时，需做兼容处理用

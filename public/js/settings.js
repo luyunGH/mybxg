@@ -1,4 +1,4 @@
-define(['jquery','template','util','uploadify','datepicker','language','region'],function($,template,util){
+define(['jquery','template','util','uploadify','datepicker','language','region','ckeditor'],function($,template,util){
     // console.log(1235);
     util.setMenu('/main/index');
     //调用后台接口填充表单
@@ -27,6 +27,8 @@ define(['jquery','template','util','uploadify','datepicker','language','region']
             $('#pcd').region({
                 url : '/public/assets/jquery-region/region.json'
             })
+            //处理文本域的富文本操作
+            CKEDITOR.replace('editor');
         }
     })
 });
