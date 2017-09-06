@@ -1,4 +1,4 @@
-define(['jquery','template','util','ckeditor','uploadify','datepicker','language','region','validate','form'],
+define(['jquery','template','util','ckeditor','uploadify','datepicker','language','region','validate','form','state'],
     function($,template,util,CKEDITOR){
     // console.log(1235);
     util.setMenu('/main/index');

@@ -12,14 +12,16 @@ require.config({//配置别名
         form : 'jquery-form/jquery.form',//表单提交插件
         uploadify : 'uploadify/jquery.uploadify.min', //文件上传插件
         region : 'jquery-region/jquery.region',//三级联动插件
+        ckeditor : 'ckeditor/ckeditor',//富文本插件，不依赖jQuery
+        nprogress : 'nprogress/nprogress',//进度条插件
+        state : '../js/state',
         common: '../js/common',
         login: '../js/login',
         index : '../js/index',
         teacherlist : '../js/teacher-list',
-        util : '../js/util',
         teacheradd : '../js/teacher-add',
-        settings : '../js/settings',
-        ckeditor : 'ckeditor/ckeditor'//富文本插件，不依赖jQuery
+        util : '../js/util',
+        settings : '../js/settings'
     },
     //判断是不是标准模块看插件中是否定义define模块
     shim : {//不是标准模块时，需做兼容处理用

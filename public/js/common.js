@@ -1,14 +1,16 @@
-define(['jquery', 'template', 'cookie'], function ($, template) {
+define(['jquery', 'template','nprogress', 'cookie'], 
+    function ($, template,NProgress) {
     /*在引入template时要放在cookie的前面 因cookie无返回值,没返回值的统一写到后面
      * 'jquery', 'template',有返回值
      * */
-    /* NProgress.start();
-     NProgress.done();*/
+     //控制顶部的进度条
+     NProgress.start();
+     NProgress.done();
     //控制左侧菜单的折叠和展开
-    /* $('.navs ul').prev('a').on('click', function () {
+     $('.navs ul').prev('a').on('click', function () {
      $(this).next().slideToggle();
      });
-     //退出功能*/
+     //退出功能
     $('#logoutBtn').click(function () {
         //console.log(111112);
         $.ajax({
