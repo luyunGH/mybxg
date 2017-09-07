@@ -5,7 +5,7 @@ define(['jquery'],function($){
     //工具函数
     return {
         setMenu : function(path){//设置导航菜单选中
-            $('.navs a[href="'+path+'"]').addClass('active');
+            $('.navs a[href="'+path+'"]').addClass('active').closest('ul').show();
         },
         //获取URL地址栏参数 查询字符串 地址栏？号后面的字符串
         //location对象中方法介绍 location.pathname 获取URL路径
